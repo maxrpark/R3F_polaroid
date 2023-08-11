@@ -9,13 +9,17 @@ const Experience: React.FC = () => {
   const { cameraRef, isCustomizeVisible, selectedColor } = useThreeContext();
   const { camera } = useThree();
 
-  const { x, y, z, color, intensity } = useControls("Directional Light", {
-    x: { value: -4.21, step: 0.01, min: -20, max: 20 },
-    y: { value: 8.01, step: 0.01, min: -20, max: 20 },
-    z: { value: 8.1, step: 0.01, min: -20, max: 20 },
-    color: "#fff99f",
-    intensity: { value: 3.3, step: 0.01, min: 0, max: 5 },
-  });
+  const { x, y, z, color, intensity, normalBias } = useControls(
+    "Directional Light",
+    {
+      x: { value: -4.21, step: 0.01, min: -20, max: 20 },
+      y: { value: 8.01, step: 0.01, min: -20, max: 20 },
+      z: { value: 8.1, step: 0.01, min: -20, max: 20 },
+      color: "#fff99f",
+      intensity: { value: 3.3, step: 0.01, min: 0, max: 5 },
+      normalBias: { value: 0.02, step: 0.001, min: 0.01, max: 0.1 },
+    }
+  );
   const {
     x: pointLightX,
     y: pointLightY,
@@ -47,8 +51,8 @@ const Experience: React.FC = () => {
         castShadow
         position={[x, y, z]}
         intensity={intensity}
-        shadow-mapSize={[1024 / 2, 1024 / 2]}
-        shadow-normalBias={0.04}
+        shadow-mapSize={[1024, 1024]}
+        shadow-normalBias={normalBias}
       />
 
       <pointLight

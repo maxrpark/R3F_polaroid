@@ -5,11 +5,11 @@ import { Leva } from "leva";
 import Experience from "./Experience";
 import { Perf } from "r3f-perf";
 
-const pathName = window.location.pathname;
+const locationHash = window.location.hash;
 const ThreeCanvas: React.FC = () => {
   return (
     <div className='webgl'>
-      <Leva collapsed hidden={pathName !== "/debug"} />
+      <Leva collapsed hidden={locationHash !== "#debug"} />
       <Canvas
         className='canvas'
         shadows
@@ -23,7 +23,7 @@ const ThreeCanvas: React.FC = () => {
           antialias: true,
         }}
       >
-        {pathName === "/debug" && <Perf position='top-left' />}
+        {locationHash === "#debug" && <Perf position='top-left' />}
         <Experience />
       </Canvas>
     </div>

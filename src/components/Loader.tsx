@@ -6,6 +6,8 @@ interface Props {
 }
 
 const Loader: React.FC<Props> = ({ progress }) => {
+  console.log(progress); // TODO
+
   return (
     <Wrapper>
       {/* <p>{progress}%</p> */}

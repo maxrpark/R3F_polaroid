@@ -1,4 +1,3 @@
-import { Camera } from "@react-three/fiber";
 import {
   useContext,
   createContext,
@@ -8,6 +7,7 @@ import {
   useEffect,
 } from "react";
 import * as THREE from "three";
+import { Camera } from "@react-three/fiber";
 
 import { useAnimateCustomizeCamera } from "../hooks/useAnimateCustomizeCamera";
 import {
@@ -22,12 +22,12 @@ import {
 interface Props {
   children: ReactNode;
 }
-type CameraInstance = Camera & {
+export type CameraInstance = Camera & {
   manual?: boolean | undefined;
 };
 
 interface ThreeContextInt {
-  modelRef: any;
+  modelRef: React.MutableRefObject<THREE.Group | null>;
   modelBackCase: React.MutableRefObject<THREE.Mesh>;
   isModelLoaded: boolean;
   isCustomizeVisible: boolean;
@@ -51,24 +51,16 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
   const enterCustomizerTimeLine = useAnimateCustomizeCamera({
     cameraRef,
     cameraTarget,
-    cameraPositionDesktop: { x: -7.65, y: 2, z: 8.57 },
-    cameraPositionMobile: {
-      x: -6.58,
-      y: 7.8,
-      z: 10.8,
-    },
+    cameraPositionDesktop: new THREE.Vector3(-7.65, 2, 8.57),
+    cameraPositionMobile: new THREE.Vector3(-6.58, 7.8, 10.8),
     cameraLookAtMobile: cameraLookAt_7_mobile,
     cameraLookAtDesktop: cameraLookAt_7,
   });
   const existCustomizerTimeLine = useAnimateCustomizeCamera({
     cameraRef,
     cameraTarget,
-    cameraPositionDesktop: { x: 5.88, y: 4.26, z: 10.04 },
-    cameraPositionMobile: {
-      x: 7.33,
-      y: 6.23,
-      z: 11.83,
-    },
+    cameraPositionDesktop: new THREE.Vector3(5.88, 4.26, 10.04),
+    cameraPositionMobile: new THREE.Vector3(7.33, 6.23, 11.83),
     cameraLookAtMobile: cameraLookAt_6_mobile,
     cameraLookAtDesktop: cameraLookAt_6,
   });

@@ -1,6 +1,19 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CameraInstance } from "../context/threeContext";
 gsap.registerPlugin(ScrollTrigger);
+
+interface Params {
+  trigger: HTMLDivElement;
+  cameraRef: React.MutableRefObject<CameraInstance>;
+  cameraTarget: React.MutableRefObject<THREE.Vector3>;
+  cameraPositionDesktop: THREE.Vector3;
+  cameraPositionMobile: THREE.Vector3;
+  cameraLookAtMobile: THREE.Vector3;
+  cameraLookAtDesktop: THREE.Vector3;
+  start: string;
+  end: string;
+}
 
 export const animateCamera = ({
   trigger,
@@ -12,13 +25,13 @@ export const animateCamera = ({
   cameraLookAtDesktop,
   start,
   end,
-}: any) => {
+}: Params) => {
   const timeLine = gsap.timeline({
     scrollTrigger: {
       trigger,
       start,
       end,
-      scrub: 0.2,
+      scrub: true,
     },
   });
 

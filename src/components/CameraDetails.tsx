@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
+
 import { useThreeContext } from "../context/threeContext";
 import { detailsData } from "../utils/data";
 import { animateCamera } from "../animations/animateCamera";
@@ -38,7 +39,7 @@ const CameraDetails: React.FC = () => {
           trigger: el,
           start: "top 30%",
           end: "+=45%",
-          scrub: 0.2,
+          scrub: true,
         },
       });
       contentTimeLine

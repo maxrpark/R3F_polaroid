@@ -11,7 +11,7 @@ const CameraModel: React.FC = () => {
     modelIsLoaded();
   });
 
-  scene.traverse((child: any) => {
+  scene.traverse((child: THREE.Mesh) => {
     if (
       child instanceof THREE.Mesh &&
       child.material instanceof THREE.MeshStandardMaterial

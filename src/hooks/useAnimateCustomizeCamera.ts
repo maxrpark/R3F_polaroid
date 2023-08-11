@@ -1,5 +1,15 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { CameraInstance } from "../context/threeContext";
+
+interface Params {
+  cameraRef: React.MutableRefObject<CameraInstance>;
+  cameraTarget: React.MutableRefObject<THREE.Vector3>;
+  cameraPositionDesktop: THREE.Vector3;
+  cameraPositionMobile: THREE.Vector3;
+  cameraLookAtMobile: THREE.Vector3;
+  cameraLookAtDesktop: THREE.Vector3;
+}
 
 export const useAnimateCustomizeCamera = ({
   cameraRef,
@@ -8,7 +18,7 @@ export const useAnimateCustomizeCamera = ({
   cameraPositionMobile,
   cameraLookAtMobile,
   cameraLookAtDesktop,
-}: any) => {
+}: Params) => {
   const timeLine = useRef(gsap.timeline({ reversed: true }));
 
   const animateFunction = () => {

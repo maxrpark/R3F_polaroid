@@ -1,32 +1,9 @@
 import React, { useEffect } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import CameraModel from "./components/CameraModel";
 import { useThreeContext } from "./context/threeContext";
 import { OrbitControls } from "@react-three/drei";
-import { Leva, useControls } from "leva";
-
-const ThreeCanvas: React.FC = () => {
-  return (
-    <div className='webgl'>
-      <Leva collapsed />
-      <Canvas
-        className='canvas'
-        shadows
-        camera={{
-          fov: 25,
-          near: 0.2,
-          far: 1000,
-          position: [10, 0, 0],
-        }}
-        gl={{
-          antialias: true,
-        }}
-      >
-        <Experience />
-      </Canvas>
-    </div>
-  );
-};
+import { useControls } from "leva";
 
 const Experience: React.FC = () => {
   const { cameraRef, isCustomizeVisible, selectedColor } = useThreeContext();
@@ -98,4 +75,4 @@ const Experience: React.FC = () => {
   );
 };
 
-export default ThreeCanvas;
+export default Experience;

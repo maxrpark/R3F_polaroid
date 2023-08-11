@@ -5,16 +5,9 @@ import { animateCamera } from "../animations/animateCamera";
 import { convertTextColor } from "../utils/helpers";
 
 interface Params {
-  cameraPositionDesktop: {
-    x: number;
-    y: number;
-    z: number;
-  };
-  cameraPositionMobile: {
-    x: number;
-    y: number;
-    z: number;
-  };
+  cameraPositionDesktop: THREE.Vector3;
+  cameraPositionMobile: THREE.Vector3;
+
   cameraLookAtMobile: THREE.Vector3;
   cameraLookAtDesktop: THREE.Vector3;
 }

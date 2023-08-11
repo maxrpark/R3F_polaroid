@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
             trigger: "#hero",
             start: "top top",
             end: "top +=100px",
-            scrub: 0.2,
+            scrub: true,
             toggleActions: "play pause resume reset",
           },
         });

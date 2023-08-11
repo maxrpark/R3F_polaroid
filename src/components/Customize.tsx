@@ -2,6 +2,7 @@ import { useThreeContext } from "../context/threeContext";
 import { colors } from "../utils/data";
 import { convertBgColor } from "../utils/helpers";
 import Wrapper from "../wrappers/CustomizeWrapper";
+
 const Customize: React.FC = () => {
   const { isCustomizeVisible, selectedColor, changeCameraCaseColor } =
     useThreeContext();

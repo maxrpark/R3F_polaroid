@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import Navbar from "./Navbar";
 import FrontView from "./FrontView";
 import Loader from "./Loader";
+import Floor from "./Floor";
 
 export {
   CameraDetails,
@@ -14,4 +15,5 @@ export {
   Navbar,
   FrontView,
   Loader,
+  Floor,
 };

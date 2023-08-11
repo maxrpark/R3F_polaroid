@@ -3,11 +3,19 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { useThreeContext } from "../context/threeContext";
 import { useEffect } from "react";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 const CameraModel: React.FC = () => {
   const { modelRef, modelBackCase, modelIsLoaded, selectedColor } =
     useThreeContext();
 
-  const { scene } = useLoader(GLTFLoader, "/camera_scene.glb", () => {
+  // const { scene } = useLoader(GLTFLoader, "/camera_scene.glb", () => {
+  //   modelIsLoaded();
+  // });
+
+  const { scene } = useLoader(GLTFLoader, "/camera_scene.glb", (loader) => {
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/");
+    loader.setDRACOLoader(dracoLoader);
     modelIsLoaded();
   });
 

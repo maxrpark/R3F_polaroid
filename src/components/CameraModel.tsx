@@ -6,7 +6,7 @@ import { useGLTF } from "@react-three/drei";
 const CameraModel: React.FC = () => {
   const { modelRef, modelBackCase, selectedColor } = useThreeContext();
 
-  const { scene } = useGLTF("/camera_scene.glb");
+  const { scene } = useGLTF("/scene_draco.glb");
 
   scene.traverse((child: any) => {
     if (

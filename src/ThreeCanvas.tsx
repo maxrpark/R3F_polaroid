@@ -4,10 +4,11 @@ import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
 import Experience from "./Experience";
 
+const pathName = window.location.pathname;
 const ThreeCanvas: React.FC = () => {
   return (
     <div className='webgl'>
-      <Leva collapsed hidden />
+      <Leva collapsed hidden={pathName !== "/debug"} />
       <Canvas
         className='canvas'
         shadows

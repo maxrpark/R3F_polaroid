@@ -58,7 +58,7 @@ const Experience: React.FC = () => {
 
   return (
     <>
-      <BakeShadows />;
+      <BakeShadows />
       <OrbitControls enabled={isCustomizeVisible} />
       <ambientLight />
       <directionalLight

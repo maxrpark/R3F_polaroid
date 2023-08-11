@@ -8,7 +8,7 @@ interface Props {
 const Loader: React.FC<Props> = ({ progress }) => {
   return (
     <Wrapper>
-      <p>{progress}%</p>
+      <p>{Math.floor(progress)}%</p>
       <span className='loader'></span>
     </Wrapper>
   );

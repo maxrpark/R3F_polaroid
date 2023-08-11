@@ -13,7 +13,7 @@ import Wrapper from "../wrappers/HeroWrapper";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero: React.FC = () => {
-  const { modelRef, isModelLoaded, cameraRef, cameraTarget, selectedColor } =
+  const { modelRef, cameraRef, cameraTarget, selectedColor } =
     useThreeContext();
 
   let mm = gsap.matchMedia(),
@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
     return () => {
       gsap.killTweensOf(cameraRef.current.position);
     };
-  }, [isModelLoaded]);
+  }, [modelRef.current]);
 
   return (
     <Wrapper id='hero'>

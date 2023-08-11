@@ -1,25 +1,14 @@
-import { useLoader } from "@react-three/fiber";
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { useThreeContext } from "../context/threeContext";
 import { useEffect } from "react";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+
+import { useGLTF } from "@react-three/drei";
 const CameraModel: React.FC = () => {
-  const { modelRef, modelBackCase, modelIsLoaded, selectedColor } =
-    useThreeContext();
+  const { modelRef, modelBackCase, selectedColor } = useThreeContext();
 
-  // const { scene } = useLoader(GLTFLoader, "/camera_scene.glb", () => {
-  //   modelIsLoaded();
-  // });
+  const { scene } = useGLTF("/camera_scene.glb");
 
-  const { scene } = useLoader(GLTFLoader, "/camera_scene.glb", (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath("/");
-    loader.setDRACOLoader(dracoLoader);
-    modelIsLoaded();
-  });
-
-  scene.traverse((child: THREE.Mesh) => {
+  scene.traverse((child: any) => {
     if (
       child instanceof THREE.Mesh &&
       child.material instanceof THREE.MeshStandardMaterial
@@ -42,4 +31,5 @@ const CameraModel: React.FC = () => {
   );
 };
 
+useGLTF.preload("/scene_draco.glb");
 export default CameraModel;

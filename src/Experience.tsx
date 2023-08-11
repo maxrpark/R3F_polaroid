@@ -2,24 +2,38 @@ import React, { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import CameraModel from "./components/CameraModel";
 import { useThreeContext } from "./context/threeContext";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, BakeShadows } from "@react-three/drei";
 import { useControls } from "leva";
 
 const Experience: React.FC = () => {
   const { cameraRef, isCustomizeVisible, selectedColor } = useThreeContext();
   const { camera } = useThree();
 
-  const { x, y, z, color, intensity, normalBias } = useControls(
-    "Directional Light",
-    {
-      x: { value: -4.21, step: 0.01, min: -20, max: 20 },
-      y: { value: 8.01, step: 0.01, min: -20, max: 20 },
-      z: { value: 8.1, step: 0.01, min: -20, max: 20 },
-      color: "#fff99f",
-      intensity: { value: 3.3, step: 0.01, min: 0, max: 5 },
-      normalBias: { value: 0.02, step: 0.001, min: 0.01, max: 0.1 },
-    }
-  );
+  const {
+    x,
+    y,
+    z,
+    color,
+    intensity,
+    normalBias,
+    top,
+    bottom,
+    left,
+    right,
+    far,
+  } = useControls("Directional Light", {
+    x: { value: -1.3, step: 0.01, min: -20, max: 20 },
+    y: { value: 1.2, step: 0.01, min: -20, max: 20 },
+    z: { value: 2.82, step: 0.01, min: -20, max: 20 },
+    color: "#fff99f",
+    intensity: { value: 3.3, step: 0.01, min: 0, max: 5 },
+    normalBias: { value: 0.02, step: 0.001, min: 0.01, max: 0.1 },
+    far: { value: 15, step: 0.01, min: -2, max: 200 },
+    top: { value: 2, step: 0.01, min: -2, max: 200 },
+    right: { value: 2, step: 0.01, min: -2, max: 200 },
+    bottom: { value: -2, step: 0.01, min: -2, max: 200 },
+    left: { value: -2, step: 0.01, min: -2, max: 200 },
+  });
   const {
     x: pointLightX,
     y: pointLightY,
@@ -44,6 +58,7 @@ const Experience: React.FC = () => {
 
   return (
     <>
+      <BakeShadows />;
       <OrbitControls enabled={isCustomizeVisible} />
       <ambientLight />
       <directionalLight
@@ -51,10 +66,15 @@ const Experience: React.FC = () => {
         castShadow
         position={[x, y, z]}
         intensity={intensity}
-        shadow-mapSize={[1024, 1024]}
+        shadow-mapSize={[2048, 2048]}
         shadow-normalBias={normalBias}
+        shadow-camera-near={1}
+        shadow-camera-far={far}
+        shadow-camera-top={top}
+        shadow-camera-right={right}
+        shadow-camera-bottom={bottom}
+        shadow-camera-left={left}
       />
-
       <pointLight
         color={pointLightColor}
         intensity={pointLightIntensity}

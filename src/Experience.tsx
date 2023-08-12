@@ -75,7 +75,7 @@ const Experience: React.FC = () => {
 
       {/* apartment  warehouse lobby*/}
       <OrbitControls enabled={isCustomizeVisible} />
-      <Environment preset='warehouse' />
+      <Environment preset='apartment' />
       <BakeShadows />
       <SoftShadows />
       <ambientLight />

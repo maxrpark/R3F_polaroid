@@ -6,7 +6,6 @@ const CustomizeWrapper = styled.div`
     inset: 0 0 0 0;
     height: 0;
     overflow: hidden;
-    /* z-index: 1; */
 
     &.show {
       height: 100vh;

@@ -29,8 +29,8 @@ const FrontView: React.FC<Props> = ({
     cameraRef,
     isCustomizeVisible,
     cameraTarget,
-    toggleShowCustomizer,
     selectedColor,
+    toggleShowCustomizer,
   } = useThreeContext();
   const sectionContainer = useRef<HTMLDivElement>(null!);
 
@@ -59,7 +59,7 @@ const FrontView: React.FC<Props> = ({
         <h3
           style={{
             visibility: `${isCustomizeVisible ? "hidden" : "visible"}`,
-            zIndex: 10000,
+            zIndex: 1,
           }}
           className='title'
         >

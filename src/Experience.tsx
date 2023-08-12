@@ -70,9 +70,6 @@ const Experience: React.FC = () => {
 
   return (
     <>
-      {/* type PresetsType = "apartment" | "city" | "dawn" | "forest" | "lobby" |
-      "night" | "park" | "studio" | "sunset" | "warehouse" */}
-
       {/* apartment  warehouse lobby*/}
       <OrbitControls enabled={isCustomizeVisible} />
       <Environment preset='apartment' />

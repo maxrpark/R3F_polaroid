@@ -2,15 +2,14 @@ import styled from "styled-components";
 
 const HeroWrapper = styled.section`
   background: var(--primary-yellow);
-  height: 100vh;
+  height: calc(100vh - 58px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .section-content {
     width: 100%;
     text-align: center;
-    z-index: 2;
-    position: absolute;
-    transform: translateY(50%);
-    top: 50%;
   }
   h1 {
     font-size: 3rem;
@@ -18,6 +17,9 @@ const HeroWrapper = styled.section`
     font-style: normal;
     font-weight: bold;
     line-height: normal;
+    z-index: 2;
+    margin-top: 7rem;
+    position: relative;
   }
   h2 {
     font-size: 1%.5;
@@ -44,6 +46,7 @@ const HeroWrapper = styled.section`
     }
     h1 {
       font-size: 6rem;
+      margin: 0;
     }
     h2 {
       font-size: 3rem;

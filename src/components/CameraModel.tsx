@@ -57,5 +57,5 @@ const CameraModel: React.FC<Props> = ({ envMapIntensity }) => {
   return <primitive ref={modelRef} object={scene}></primitive>;
 };
 
-useGLTF.preload("/scene_draco.glb");
+useGLTF.preload("/scene_final.glb");
 export default CameraModel;

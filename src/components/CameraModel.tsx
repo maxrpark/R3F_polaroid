@@ -3,10 +3,33 @@ import { useThreeContext } from "../context/threeContext";
 import { useEffect } from "react";
 
 import { useGLTF } from "@react-three/drei";
-const CameraModel: React.FC = () => {
+import { useControls } from "leva";
+
+interface Props {
+  envMapIntensity: number;
+}
+
+const CameraModel: React.FC<Props> = ({ envMapIntensity }) => {
   const { modelRef, modelBackCase, selectedColor } = useThreeContext();
 
-  const { scene } = useGLTF("/scene_draco.glb");
+  const { scene } = useGLTF("/scene_draco_2.glb");
+
+  const { metalness: glassAreametalness, roughness: glassArearoughness } =
+    useControls("Camera", {
+      metalness: {
+        value: 0.5,
+        step: 0.001,
+        min: 0,
+        max: 1,
+      },
+
+      roughness: {
+        value: 0,
+        step: 0.001,
+        min: 0,
+        max: 1,
+      },
+    });
 
   scene.traverse((child: any) => {
     if (
@@ -15,8 +38,15 @@ const CameraModel: React.FC = () => {
     ) {
       child.castShadow = true;
       child.receiveShadow = true;
+      child.material.envMapIntensity = envMapIntensity;
     }
     if (child.name == "camera_case") modelBackCase.current = child;
+    if (child.name == "Object_40_1") {
+    }
+    if (child.name.startsWith("glass_")) {
+      child.material.metalness = glassAreametalness;
+      child.material.roughness = glassArearoughness;
+    }
   });
 
   useEffect(() => {
@@ -24,11 +54,7 @@ const CameraModel: React.FC = () => {
       selectedColor;
   }, [selectedColor]);
 
-  return (
-    <>
-      <primitive ref={modelRef} object={scene}></primitive>
-    </>
-  );
+  return <primitive ref={modelRef} object={scene}></primitive>;
 };
 
 useGLTF.preload("/scene_draco.glb");

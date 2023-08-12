@@ -1,7 +1,11 @@
 import React from "react";
 import { useThreeContext } from "../context/threeContext";
 
-const Floor: React.FC = () => {
+interface Props {
+  envMapIntensity: number;
+}
+
+const Floor: React.FC<Props> = ({ envMapIntensity }) => {
   const { isCustomizeVisible, selectedColor } = useThreeContext();
   return (
     <mesh
@@ -15,6 +19,7 @@ const Floor: React.FC = () => {
         transparent
         opacity={isCustomizeVisible ? 0 : 0.1}
         color={selectedColor}
+        envMapIntensity={envMapIntensity}
       />
     </mesh>
   );

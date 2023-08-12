@@ -7,12 +7,12 @@ import { convertTextColor } from "../utils/helpers";
 interface Params {
   cameraPositionDesktop: THREE.Vector3;
   cameraPositionMobile: THREE.Vector3;
-
   cameraLookAtMobile: THREE.Vector3;
   cameraLookAtDesktop: THREE.Vector3;
 }
 interface Props extends Params {
   title: string;
+  description: string;
   showButton: boolean;
 }
 
@@ -22,6 +22,7 @@ const FrontView: React.FC<Props> = ({
   cameraLookAtMobile,
   cameraLookAtDesktop,
   title,
+  description,
   showButton,
 }) => {
   const {
@@ -67,10 +68,7 @@ const FrontView: React.FC<Props> = ({
         <p
           style={{ visibility: `${isCustomizeVisible ? "hidden" : "visible"}` }}
         >
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-          incidunt, sint asperiores dolores obcaecati repudiandae neque delectus
-          soluta non ut deserunt perferendis illum, saepe nobis deleniti alias
-          quia similique aut.
+          {description}
         </p>
         {showButton && (
           <button

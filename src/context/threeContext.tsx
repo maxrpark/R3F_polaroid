@@ -79,7 +79,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
     } else {
       document.body.style.overflow = "hidden";
       if (window.innerWidth < 800) {
-        window.alert("Drag or zoom to see full details");
+        window.alert("Drag to explore the 360-degree view");
       }
     }
     setIsCustomizeVisible((oldValue) => {

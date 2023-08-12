@@ -34,22 +34,20 @@ const App: React.FC = () => {
           cameraLookAtMobile={cameraLookAt_5_mobile}
           cameraLookAtDesktop={cameraLookAt_5}
           title={"Shoot with iconic Polaroid film"}
+          description={
+            "It’s hard to top a classic. The Polaroid Now is compatible with Polaroid i-Type & 600 film in the classic Polaroid instant film format."
+          }
           showButton={false}
         />
         <FrontView
-          // cameraPositionDesktop={{ x: 5.88, y: 4.26, z: 10.04 }}
-
-          // cameraPositionMobile={{
-          //   x: 7.55,
-          //   y: 7.36,
-          //   z: 10.68,
-          // }}
-
           cameraPositionDesktop={new THREE.Vector3(5.88, 4.26, 10.04)}
           cameraPositionMobile={new THREE.Vector3(7.55, 7.36, 10.68)}
           cameraLookAtMobile={cameraLookAt_6_mobile}
           cameraLookAtDesktop={cameraLookAt_6}
           title={"Now in your favorite color"}
+          description={
+            "Elevate your instant photography experience with a personalized touch. Choose from a range of stunning colors that match your style and capture moments uniquely yours. Make every shot a statement with the Polaroid Now in your chosen hue"
+          }
           showButton={true}
         />
         <Customize />

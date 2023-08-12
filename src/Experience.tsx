@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import CameraModel from "./components/CameraModel";
 import { useThreeContext } from "./context/threeContext";
-import { OrbitControls, BakeShadows, SoftShadows } from "@react-three/drei";
+import {
+  OrbitControls,
+  BakeShadows,
+  SoftShadows,
+  Environment,
+} from "@react-three/drei";
 import { useControls } from "leva";
 import { Floor } from "./components";
 
@@ -24,10 +29,10 @@ const Experience: React.FC = () => {
     far,
   } = useControls("Directional Light", {
     x: { value: -1.3, step: 0.01, min: -20, max: 20 },
-    y: { value: 1.2, step: 0.01, min: -20, max: 20 },
+    y: { value: 2.2, step: 0.01, min: -20, max: 20 },
     z: { value: 2.82, step: 0.01, min: -20, max: 20 },
     color: "#fff99f",
-    intensity: { value: 3.3, step: 0.01, min: 0, max: 5 },
+    intensity: { value: 1.5, step: 0.01, min: 0, max: 5 },
     normalBias: { value: 0.02, step: 0.001, min: 0.01, max: 0.1 },
     far: { value: 15, step: 0.01, min: -2, max: 200 },
     top: { value: 2, step: 0.01, min: -2, max: 200 },
@@ -49,6 +54,15 @@ const Experience: React.FC = () => {
     color: "#ffd07e",
   });
 
+  const { envMapIntensity } = useControls("Environment", {
+    envMapIntensity: {
+      value: 0.2,
+      step: 0.001,
+      min: 0,
+      max: 1,
+    },
+  });
+
   useEffect(() => {
     camera.lookAt(-1.6, -0.47, 1.25);
     cameraRef.current = camera;
@@ -56,9 +70,14 @@ const Experience: React.FC = () => {
 
   return (
     <>
+      {/* type PresetsType = "apartment" | "city" | "dawn" | "forest" | "lobby" |
+      "night" | "park" | "studio" | "sunset" | "warehouse" */}
+
+      {/* apartment  warehouse lobby*/}
+      <OrbitControls enabled={isCustomizeVisible} />
+      <Environment preset='warehouse' />
       <BakeShadows />
       <SoftShadows />
-      <OrbitControls enabled={isCustomizeVisible} />
       <ambientLight />
       <directionalLight
         color={color}
@@ -79,9 +98,8 @@ const Experience: React.FC = () => {
         intensity={pointLightIntensity}
         position={[pointLightX, pointLightY, pointLightZ]}
       />
-
-      <CameraModel />
-      <Floor />
+      <CameraModel envMapIntensity={envMapIntensity} />
+      <Floor envMapIntensity={envMapIntensity} />
     </>
   );
 };

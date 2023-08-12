@@ -39,7 +39,7 @@ export const detailsData = [
   {
     id: "detail-1",
     title: "Real Life is beautifully imperfect",
-    text: "Lorem ipsum dolor sit amet consectetur. Viverra sit vitae vel posuere montes. Dui non pharetra vitae eget velit ac. Mi diam enim a vitae accumsan cras fermentum vitae. Malesuada elementum aenean nibh dolor.",
+    text: "In other words: take sharper shots. The Polaroid Now selects which lens is suitable, meaning you can take beautiful photos in more places, more often, with less hassle — even without the flash.",
 
     cameraPositionDesktop: new THREE.Vector3(-3.84, 2.6, 8.76),
     cameraPositionMobile: new THREE.Vector3(-8.73, 6.86, 10.92),
@@ -50,7 +50,7 @@ export const detailsData = [
   {
     id: "detail-2",
     title: "Autofocus 2-lens system",
-    text: "Lorem ipsum dolor sit amet consectetur. Viverra sit vitae vel posuere montes. Dui non pharetra vitae eget velit ac. Mi diam enim a vitae accumsan cras fermentum vitae. Malesuada elementum aenean nibh dolor.",
+    text: "In other words: take sharper shots. The Polaroid Now selects which lens is suitable, meaning you can take beautiful photos in more places, more often, with less hassle — even without the flash.",
     cameraPositionDesktop: new THREE.Vector3(3.81, 1.17, 4.48),
     cameraPositionMobile: new THREE.Vector3(-5.74, 1.35, 8.23),
 
@@ -60,7 +60,7 @@ export const detailsData = [
   {
     id: "detail-3",
     title: "Classic look, future-facing materials",
-    text: "Lorem ipsum dolor sit amet consectetur. Viverra sit vitae vel posuere montes. Dui non pharetra vitae eget velit ac. Mi diam enim a vitae accumsan cras fermentum vitae. Malesuada elementum aenean nibh dolor.",
+    text: "The iconic camera retains its style, but is now made with 40% recycled materials.",
     cameraPositionDesktop: new THREE.Vector3(-4.68, 1.13, 5.3),
     cameraPositionMobile: new THREE.Vector3(5.64, 4.24, 8.65),
 

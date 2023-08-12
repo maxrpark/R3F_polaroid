@@ -16,7 +16,7 @@ const Customize: React.FC = () => {
         className={`${isCustomizeVisible ? "show" : ""} overlay`}
       ></div>
       {isCustomizeVisible && (
-        <p className='label'>Drag around to for 360 view</p>
+        <p className='label'>Drag to explore the 360-degree view</p>
       )}
       <div
         className={`${isCustomizeVisible ? "show-colors" : ""} colors-wrapper`}

@@ -83,7 +83,7 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
         enterCustomizerTimeLine.progress(0);
         enterCustomizerTimeLine.play();
       } else {
-        document.body.style.cursor = "pointer";
+        document.body.style.cursor = "auto";
         existCustomizerTimeLine.progress(0);
         existCustomizerTimeLine.play();
       }

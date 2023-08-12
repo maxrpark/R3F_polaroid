@@ -12,7 +12,7 @@ interface Props {
 const CameraModel: React.FC<Props> = ({ envMapIntensity }) => {
   const { modelRef, modelBackCase, selectedColor } = useThreeContext();
 
-  const { scene } = useGLTF("/scene_draco_2.glb");
+  const { scene } = useGLTF("/scene_final.glb");
 
   const { metalness: glassAreametalness, roughness: glassArearoughness } =
     useControls("Camera", {

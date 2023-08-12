@@ -29,13 +29,11 @@ export type CameraInstance = Camera & {
 interface ThreeContextInt {
   modelRef: React.MutableRefObject<THREE.Group | null>;
   modelBackCase: React.MutableRefObject<THREE.Mesh>;
-  // isModelLoaded: boolean;
   isCustomizeVisible: boolean;
   cameraRef: React.MutableRefObject<CameraInstance>;
   cameraTarget: React.MutableRefObject<THREE.Vector3>;
   selectedColor: THREE.Color;
 
-  // modelIsLoaded: () => void;
   toggleShowCustomizer: () => void;
   changeCameraCaseColor: (color: THREE.Color) => void;
 }
@@ -65,13 +63,8 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
     cameraLookAtDesktop: cameraLookAt_6,
   });
 
-  // const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [isCustomizeVisible, setIsCustomizeVisible] = useState(false);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
-
-  // const modelIsLoaded = () => {
-  //   setIsModelLoaded(true);
-  // };
 
   const toggleShowCustomizer = () => {
     if (document.body.style.overflow === "hidden") {
@@ -86,9 +79,11 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
       const newValue = !oldValue;
 
       if (newValue === true) {
+        document.body.style.cursor = "grab";
         enterCustomizerTimeLine.progress(0);
         enterCustomizerTimeLine.play();
       } else {
+        document.body.style.cursor = "pointer";
         existCustomizerTimeLine.progress(0);
         existCustomizerTimeLine.play();
       }

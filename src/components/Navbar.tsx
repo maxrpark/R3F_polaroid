@@ -6,6 +6,14 @@ const Navbar: React.FC = () => {
     <Wrapper>
       <div className='navbar'>
         <p className='logo'>polaroid</p>
+        <a
+          href='https://twitter.com/MaxCodeJourney'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='max'
+        >
+          MaxCodeJourney
+        </a>
       </div>
     </Wrapper>
   );
@@ -17,6 +25,9 @@ const Wrapper = styled.nav`
     max-width: 1600px;
     margin: 0 auto;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .logo {
     font-family: var(--secondary-font);
@@ -24,6 +35,18 @@ const Wrapper = styled.nav`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+  .max {
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--primary-black);
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.1s linear;
+
+    &:hover {
+      color: crimson;
+    }
   }
 `;
 export default Navbar;

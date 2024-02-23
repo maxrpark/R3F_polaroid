@@ -26,15 +26,6 @@ export const animateCamera = ({
   start,
   end,
 }: Params) => {
-  const timeLine = gsap.timeline({
-    scrollTrigger: {
-      trigger,
-      start,
-      end,
-      scrub: true,
-    },
-  });
-
   let mm = gsap.matchMedia(),
     breakPoint = 800;
   mm.add(
@@ -45,6 +36,15 @@ export const animateCamera = ({
     },
     (context) => {
       let { isMobile } = context.conditions as { isMobile: boolean };
+
+      const timeLine = gsap.timeline({
+        scrollTrigger: {
+          trigger,
+          start,
+          end,
+          scrub: true,
+        },
+      });
 
       const cameraPosition = isMobile
         ? cameraPositionMobile
@@ -70,6 +70,7 @@ export const animateCamera = ({
         );
 
       return () => {
+        timeLine.kill();
         timeLine.progress(0);
       };
     }

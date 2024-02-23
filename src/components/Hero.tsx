@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
 
   let mm = gsap.matchMedia(),
     breakPoint = 800;
-  const timeLine = gsap.timeline();
+
   const animateHero = () => {
     mm.add(
       {
@@ -28,6 +28,8 @@ const Hero: React.FC = () => {
       },
       (context) => {
         let { isMobile } = context.conditions as { isMobile: boolean };
+
+        const timeLine = gsap.timeline();
         cameraTarget.current = isMobile
           ? cameraLookAt_1_mobile
           : cameraLookAt_1;
@@ -95,6 +97,7 @@ const Hero: React.FC = () => {
         });
 
         return () => {
+          timeLine.kill();
           timeLine.progress(0);
         };
       }

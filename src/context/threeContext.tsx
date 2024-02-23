@@ -1,11 +1,4 @@
-import {
-  useContext,
-  createContext,
-  ReactNode,
-  useRef,
-  useState,
-  useEffect,
-} from "react";
+import { useContext, createContext, ReactNode, useRef, useState } from "react";
 import * as THREE from "three";
 import { Camera } from "@react-three/fiber";
 
@@ -96,23 +89,17 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
     setSelectedColor(color);
   };
 
-  useEffect(() => {
-    if (!cameraRef.current) return;
-  }, [cameraRef.current]);
-
   return (
     <ThreeContext.Provider
       value={{
         cameraTarget,
         selectedColor,
         modelRef,
-        // isModelLoaded,
         cameraRef,
         modelBackCase,
         isCustomizeVisible,
         toggleShowCustomizer,
         changeCameraCaseColor,
-        // modelIsLoaded,
       }}
     >
       {children}

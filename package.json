@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/drei": "^9.80.1",
     "@react-three/fiber": "^8.13.6",
+    "@studio-freight/react-lenis": "^0.0.45",
     "@types/three": "^0.155.0",
     "gsap": "^3.12.2",
     "leva": "^0.9.35",

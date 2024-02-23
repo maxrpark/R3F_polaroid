@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import ThreeCanvas from "./ThreeCanvas";
 import { useProgress } from "@react-three/drei";
 import * as THREE from "three";
@@ -16,9 +16,19 @@ import {
   cameraLookAt_6,
   cameraLookAt_6_mobile,
 } from "./utils/data";
+import { useLenis } from "@studio-freight/react-lenis";
 
 const App: React.FC = () => {
   const { progress } = useProgress();
+
+  const lenis = useLenis(() => {});
+
+  useEffect(() => {
+    if (lenis) lenis.stop();
+    if (progress === 100) {
+      lenis?.start();
+    }
+  }, [progress]);
 
   return (
     <main id='app'>

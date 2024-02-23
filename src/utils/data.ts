@@ -1,4 +1,5 @@
 import * as THREE from "three";
+export const breakPoint = 800;
 
 // desktop
 export const initialCameraPosition = new THREE.Vector3(2.44, 4.9, 8.9);

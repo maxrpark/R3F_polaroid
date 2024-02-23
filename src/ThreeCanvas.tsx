@@ -13,12 +13,6 @@ const ThreeCanvas: React.FC = () => {
       <Canvas
         className='canvas'
         shadows
-        camera={{
-          fov: 25,
-          near: 0.2,
-          far: 1000,
-          position: [10, 0, 0],
-        }}
         gl={{
           antialias: true,
         }}

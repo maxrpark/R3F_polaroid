@@ -7,6 +7,7 @@ import {
   BakeShadows,
   SoftShadows,
   Environment,
+  PerspectiveCamera,
 } from "@react-three/drei";
 import { useControls } from "leva";
 import { Floor } from "./components";
@@ -64,13 +65,23 @@ const Experience: React.FC = () => {
   });
 
   useEffect(() => {
-    camera.lookAt(-1.6, -0.47, 1.25);
-    cameraRef.current = camera;
-  }, []);
+    if (window.innerWidth > 800) {
+      camera.lookAt(-1.6, -0.47, 1.25);
+    } else {
+      camera.lookAt(-1.6, -0.47, 1.25);
+    }
+  }, [cameraRef.current]);
 
   return (
     <>
-      {/* apartment  warehouse lobby*/}
+      <PerspectiveCamera
+        makeDefault
+        ref={cameraRef}
+        fov={25}
+        near={0.2}
+        far={1000}
+        position={[10, 0, 0]}
+      />
       <OrbitControls enabled={isCustomizeVisible} />
       <Environment preset='apartment' />
       <BakeShadows />

@@ -54,16 +54,12 @@ export const animateCamera = ({
 
       timeLine
         .to(cameraRef.current.position, {
-          ease: "none",
-          immediateRender: false,
           ...cameraPosition,
           onUpdate: () => cameraRef.current.lookAt(cameraTarget.current),
         })
         .to(
           cameraTarget.current,
           {
-            ease: "none",
-            immediateRender: false,
             ...cameraLookAt,
           },
           "<"

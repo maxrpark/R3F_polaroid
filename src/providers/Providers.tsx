@@ -8,7 +8,21 @@ const Providers: React.FC<Props> = ({ children }) => {
   return (
     // options={{ syncTouch: true }}
     <>
-      <ReactLenis root>{children}</ReactLenis>
+      <ReactLenis
+        options={{
+          lerp: 0.05,
+
+          wheelMultiplier: 1.5,
+
+          //
+          syncTouch: true,
+          syncTouchLerp: 0.05,
+          touchInertiaMultiplier: 30,
+        }}
+        root
+      >
+        {children}
+      </ReactLenis>
     </>
   );
 };

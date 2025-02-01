@@ -10,11 +10,14 @@ import {
 } from "../utils/data";
 import { convertTextColor } from "../utils/helpers";
 import Wrapper from "../wrappers/HeroWrapper";
+import { useLenis } from "@studio-freight/react-lenis";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero: React.FC = () => {
   const { modelRef, cameraRef, cameraTarget, selectedColor } =
     useThreeContext();
+  //@ts-ignore
+  const lenis = useLenis();
 
   let mm = gsap.matchMedia(),
     breakPoint = 800;
@@ -51,7 +54,7 @@ const Hero: React.FC = () => {
               cameraRef.current.lookAt(cameraTarget.current);
             },
             onComplete: () => {
-              document.body.style.overflow = "scroll";
+              lenis?.start();
             },
           })
           .to(
@@ -105,7 +108,9 @@ const Hero: React.FC = () => {
   };
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (!lenis) return;
+
+    lenis?.stop();
     window.scrollTo(0, 0);
     if (!modelRef.current) return;
     animateHero();
@@ -113,7 +118,7 @@ const Hero: React.FC = () => {
     return () => {
       gsap.killTweensOf(cameraRef.current.position);
     };
-  }, [modelRef.current]);
+  }, [modelRef.current, lenis]);
 
   return (
     <Wrapper id='hero'>

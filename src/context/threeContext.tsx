@@ -11,6 +11,7 @@ import {
   cameraLookAt_7_mobile,
   colors,
 } from "../utils/data";
+import { useLenis } from "@studio-freight/react-lenis";
 
 interface Props {
   children: ReactNode;
@@ -39,6 +40,9 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
   const cameraTarget = useRef<THREE.Vector3>(cameraLookAt_1);
   const modelBackCase = useRef<THREE.Mesh>(null!);
 
+  //@ts-ignore
+  const lenis = useLenis();
+
   const enterCustomizerTimeLine = useAnimateCustomizeCamera({
     cameraRef,
     cameraTarget,
@@ -60,10 +64,11 @@ export const ThreeProvider: React.FC<Props> = ({ children }) => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const toggleShowCustomizer = () => {
-    if (document.body.style.overflow === "hidden") {
-      document.body.style.overflow = "scroll";
+    if (lenis?.__isStopped) {
+      lenis.start();
     } else {
-      document.body.style.overflow = "hidden";
+      // document.body.style.overflow = "hidden";
+      lenis?.stop();
       if (window.innerWidth < 800) {
         window.alert("Drag to explore the 360-degree view");
       }

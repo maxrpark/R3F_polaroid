@@ -38,6 +38,7 @@ export const animateCamera = ({
       let { isMobile } = context.conditions as { isMobile: boolean };
 
       const timeLine = gsap.timeline({
+        defaults: { ease: "none" },
         scrollTrigger: {
           trigger,
           start,
@@ -66,7 +67,7 @@ export const animateCamera = ({
         );
 
       return () => {
-        timeLine.kill();
+        // timeLine.kill();
         timeLine.progress(0);
       };
     }

@@ -12,7 +12,7 @@ const Providers: React.FC<Props> = ({ children }) => {
         options={{
           lerp: 0.05,
 
-          wheelMultiplier: 1.5,
+          wheelMultiplier: 0.5,
 
           //
           syncTouch: true,
